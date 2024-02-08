@@ -68,6 +68,12 @@ async def toggle_status(ID: str):
 @app.get("/", response_class=HTMLResponse)
 async def main_page(request: Request):
     return templates.TemplateResponse("main_page.html", {"request": request})
+
+@app.post("/Login")
+async def main_page(ID,PW):
+    data = Find_Data(ID,PW)
+    return data
+
 #완료
 @app.post("/main/", response_class=HTMLResponse)
 async def main_login(request: Request, password: str = Form(...)):
